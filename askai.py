@@ -104,7 +104,6 @@ def start_ai(comando):
 def ayuda():
     print()
     print()
-
     print("******************************************")
     print("*             -- ASK_AI --               *")
     print("*                                        *")
