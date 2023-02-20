@@ -5,11 +5,11 @@ import json
 
 openai.api_key = "YOUR GP3 SECRET API HERE"
 
-def execute_AI(mensaje):
+def execute_AI(message):
     try:
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=mensaje + "\nA:",
+            prompt= message + "\nA:",
             temperature=0.1,
             max_tokens=2000,
             top_p=1,
@@ -20,32 +20,32 @@ def execute_AI(mensaje):
 
         i = json.loads(str(response))
 
-        respuesta = i["choices"][0]["text"]
+        ai_response = i["choices"][0]["text"]
 
         # print(respuesta)
         # os.system("cls")
-        print("Respondiendo...")
-        print(respuesta)
+        print("Thinking...")
+        print(ai_response)
 
 
     except:
         pass
 
 
-def start_ai(comando):
+def start_ai(command):
 
     if input_text:
-        if comando == "t":
-            mensaje = input("Texto a traducir: ")
-            mensaje = "Traduce al ingles: " + mensaje
+        if command == "t":
+            message = input("Text to translate: ")
+            message = "Translate to english: " + message
 
         else:
-            mensaje = input("Cual es la pregunta: ")
+            message = input("What is your question: ")
             os.system("cls")
-            print("Texto a procesar: \"" + mensaje + "\"")
+            print("Text to process: \"" + message + "\"")
 
-        print("Procesando...")
-        execute_AI(mensaje)
+        print("Procesing...")
+        execute_AI(message)
         return
 
 
@@ -58,27 +58,14 @@ def ayuda():
     print("******************************************")
     print("*             -- ASK_AI --               *")
     print("*                                        *")
-    print("*           'E' (modo normal)            *")
-    print("*           'T' (modo traduccion)        *")
-    print("*           'H' (Ayuda)                  *")
-    print("*           'Q' (salir del sistema)      *")
+    print("*           'E' (normal mode)            *")
+    print("*           'T' (translate mode)         *")
+    print("*           'H' (Help)                   *")
+    print("*           'Q' (Quit app)               *")
     print("*                                        *")
     print("******************************************")
     print()
-    print("Opcion 'E' (modo normal)")
-    print("     Responde a lo que le escribamos por consola")
-    print()
-    print("Opcion 'T' (modo traduccion)")
-    print("     Traduce lo que le escribamos por consola")
-    print()
-    print("Opcion 'H' (Ayuda)")
-    print("     Se imprimira esta ayuda por consola")
-    print()
-    print("Opcion 'q' (Salir del sistema)")
-    print("     El programa terminara y se cerrara la consola de comandos de la IA")
-    print()
-    print("------------------------------------------------------------------------------------")
-    print()
+
 # INICIO DELPROGRAMA
 
 os.system("cls")
@@ -87,12 +74,12 @@ print()
 print("******************************************")
 print("*             -- ASK_AI --               *")
 print("*                                        *")
-print("* OPCIONES:                              *")
-print("*           'E' (Normal)                  *")
-print("*           'H' (Ayuda)                  *")
-print("*           'Q' (salir del sistema)      *")
+print("* OPTIONS :                              *")
+print("*           'E' (Normal mode)            *")
+print("*           'H' (Help)                   *")
+print("*           'Q' (quit)                   *")
 print("*                                        *")
-print("*       Programa desarrollado por:       *")
+print("*               Developed by:            *")
 print("*           RAUL TORRICO  ©2023          *")
 print("*                                        *")
 #print("*                                        *")
@@ -103,17 +90,9 @@ print()
 print()
 
 
-pregunta_nombre = "Cuál es tu nombre?: "
-intro = "Hola, bienvenido al sistema de ayuda ask ai. Para comenzar teclee la opción de interacción, s para modo silencioso, e para modo escritura y n para modo normal, y a continuación la tecla intro"
-
-#habla(intro)
-
-#habla(pregunta_nombre)
-#nombre = input(pregunta_nombre)
-
 primer_paso = True
-opcion_inicial = "Elige 'opcion', y pulsa INTRO para continuar: "
-opcion = "Pulsa INTRO"
+opcion_inicial = "Choose 'option', y and press INTRO to continue: "
+opcion = "Press INTRO"
 
 
 #BUCLE
