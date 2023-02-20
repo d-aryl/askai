@@ -5,26 +5,7 @@ import json
 
 openai.api_key = "GP3 SECRET API HERE"
 
-s = pyttsx3.init()
-s.setProperty('rate', 150)
-s.setProperty('voice', 'spanish')
-s.setProperty('volume', 1)
 
-r = sr.Recognizer()
-
-
-def reconoce(source):
-    try:
-        r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
-    except:
-        return ""
-    return audio
-
-
-def habla(respuesta):
-    s.say(respuesta)
-    s.runAndWait()
 
 
 def execute_AI(mensaje):
@@ -70,34 +51,7 @@ def start_ai(comando):
         execute_AI(mensaje)
         return
 
-    with sr.Microphone() as source:
-        print("Escuchando...")
-        pregunta = reconoce(source)
-        if pregunta != "":
-            try:
-                mensaje = r.recognize_google(pregunta, language='es-ES')
 
-                os.system("cls")
-                if mensaje != "":
-                    os.system("cls")
-
-                    if comando == "t":
-                        print("Texto a traducir: \"" + mensaje + "\"")
-
-                        print("Procesando...")
-                        mensaje = "Traduce al ingles: " + mensaje
-                        execute_AI(mensaje)
-
-                    print("Texto a procesar: \"" + mensaje + "\"")
-
-                    print("Procesando...")
-
-                    execute_AI(mensaje)
-
-                else:
-                    os.system("cls")
-            except:
-                pass
 
 
 
@@ -107,11 +61,15 @@ def ayuda():
     print("******************************************")
     print("*             -- ASK_AI --               *")
     print("*                                        *")
+    print("*           'E' (modo normal)            *")
     print("*           'T' (modo traduccion)        *")
     print("*           'H' (Ayuda)                  *")
     print("*           'Q' (salir del sistema)      *")
     print("*                                        *")
     print("******************************************")
+    print()
+    print("Opcion 'E' (modo normal)")
+    print("     Responde a lo que le escribamos por consola")
     print()
     print("Opcion 'T' (modo traduccion)")
     print("     Traduce lo que le escribamos por consola")
@@ -133,6 +91,7 @@ print("******************************************")
 print("*             -- ASK_AI --               *")
 print("*                                        *")
 print("* OPCIONES:                              *")
+print("*           'E' (Normal)                  *")
 print("*           'H' (Ayuda)                  *")
 print("*           'Q' (salir del sistema)      *")
 print("*                                        *")
@@ -176,9 +135,6 @@ while True:
     if len(opcion) > 1:
         continue
 
-    if opcion == "s":
-        silent_mode = True
-        input_text = False
     elif opcion == "e":
         silent_mode = True
         input_text = True
