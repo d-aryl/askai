@@ -3,10 +3,7 @@ import openai
 import json
 
 
-openai.api_key = "GP3 SECRET API HERE"
-
-
-
+openai.api_key = "YOUR GP3 SECRET API HERE"
 
 def execute_AI(mensaje):
     try:
