@@ -52,7 +52,7 @@ def start_ai(command):
 
 
 
-def ayuda():
+def help():
     print()
     print()
     print("******************************************")
@@ -90,32 +90,32 @@ print()
 print()
 
 
-primer_paso = True
-opcion_inicial = "Choose 'option', y and press INTRO to continue: "
-opcion = "Press INTRO"
+first_time = True
+first_option = "Choose 'option', y and press INTRO to continue: "
+option = "Press INTRO"
 
 
 #BUCLE
 while True:
     print()
-    if primer_paso:
+    if first_time:
         #habla(opcion_inicial)
-        opcion = input(opcion_inicial)
-        comando = opcion
-        primer_paso = False
+        option = input(first_option)
+        command = option
+        first_time = False
     else:
-        comando = input("-- Pulsa intro -- ")
-        if comando == "q": quit()
-        elif comando == "h": ayuda()
+        command = input("-- Press intro -- ")
+        if command == "q": quit()
+        elif command == "h": help()
 
-    if len(opcion) > 1:
+    if len(option) > 1:
         continue
 
-    elif opcion == "e":
+    elif option == "e":
         silent_mode = True
         input_text = True
-    elif opcion == "h":
-        ayuda()
+    elif option == "h":
+        help()
         continue
     else:
         silent_mode = False
@@ -123,4 +123,4 @@ while True:
 
     os.system("cls")
 
-    start_ai(comando)
+    start_ai(command)
